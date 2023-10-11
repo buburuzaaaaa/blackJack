@@ -7,5 +7,14 @@
 </head>
 <body>
     <h1>Hello <%= User.name %> </h1>
+    <h1>Current win/lost: 
+        <% if(User.loss === 0){%>
+            <%=User.win %> Wins and <%=User.loss%> Losses
+        <%}else{%>
+            <%=User.win / User.lost %>
+        <%}%>
+    </h1>
+    <button onclick="game()">Play game</button>
+    <script src="../navigation.js"></script>
 </body>
 </html>
