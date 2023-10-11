@@ -1,7 +1,7 @@
 @import "styles.css";
 @font-face {
   font-family: pirate;
-  src: url(../Blackpearl-vPxA.ttf);
+  src: url(./Blackpearl-vPxA.ttf);
 }
 body {
   background-color: rgb(21, 96, 14);
@@ -16,10 +16,21 @@ h1 {
 }
 
 .btn {
-  width: 15vw;
+  width: 10vw;
+  height: 2.5vw;
+  font-family: pirate;
+  font-size: 1.5vw;
+  border-radius: 1vw;
+  background-color: rgba(111, 49, 23, 0.963);
+  color: white;
+  border: 0.2vw black solid;
+}
+
+.btn1 {
+  width: 13vw;
   height: 5vw;
   font-family: pirate;
-  font-size: 3vw;
+  font-size: 2vw;
   border-radius: 1vw;
   background-color: rgba(111, 49, 23, 0.963);
   color: white;
@@ -27,5 +38,18 @@ h1 {
 }
 
 .ply {
+  text-align: center;
+  margin-top: 7vw;
+}
+
+.txt-bx {
+  border-radius: 0.5vw;
+  font-family: pirate;
+  border: 0.2vw black solid;
+  width: 10vw;
+  height: 2vw;
+}
+
+div {
   text-align: center;
 }/*# sourceMappingURL=styles.css.map */
