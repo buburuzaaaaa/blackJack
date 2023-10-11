@@ -21,11 +21,16 @@ const userSchema = new Schema({
         required: true,
         trim: true
     },
-    "win/loss":{
+    "win":{
         type: Number,
         validate:{validator: (value)=>{return typeof value === "number"}},
         default: 0
-    }
+    },
+    "loss":{
+        type: Number,
+        validate:{validator: (value)=>{return typeof value === "number"}},
+        default: 0
+    },
 }, {collection: "users"});
 
 const user = mongoose.model('user', userSchema);
