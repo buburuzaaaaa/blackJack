@@ -2,6 +2,7 @@ import { sendFileNav } from './controllers/nav-controller.js';
 import { getUser } from './controllers/user-controller.js';
 import signup from './routes/signup.js';
 import { login } from './middleware/login.js';
+import { isAuthenticated } from './middleware/auth.js'; 
 import game from './routes/game.js'
 
 import express from 'express';
@@ -24,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/signup', signup)
-app.use('/game', game)
+app.use('/game', isAuthenticated, game)
 
 app.route('/').get(sendFileNav("../public/index.html")).post(login);
 app.get('/home', getUser);
