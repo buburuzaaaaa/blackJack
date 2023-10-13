@@ -20,7 +20,20 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false, limit: 100000, parameterLimit: 6}))
-app.use(session({secret: 'place-holder', resave: false, saveUninitialized: true,}));
+app.use(session({
+    secret: "fyhifwheufhuwebvfiwuygf38274gf23087gf32407h",
+    deck_id: 'place-holder', 
+    player: {
+        cards: [],
+        value: 0
+    },
+    dealer: {
+        cards: [],
+        value: 0
+    },
+    resave: false, 
+    saveUninitialized: true,
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -28,6 +41,6 @@ app.use('/signup', signup)
 app.use('/game', isAuthenticated, game)
 
 app.route('/').get(sendFileNav("../public/index.html")).post(login);
-app.get('/home', getUser);
+app.get('/home', isAuthenticated, getUser);
 
 app.listen(5000);
