@@ -1,3 +1,4 @@
+import bcrypt from "bcrypt";
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
@@ -32,6 +33,10 @@ const userSchema = new Schema({
         default: 0
     },
 }, {collection: "users"});
+
+userSchema.methods.validPassword = function (password) {
+  return bcrypt.compare(password, this.password);
+};
 
 const user = mongoose.model('user', userSchema);
 export default user

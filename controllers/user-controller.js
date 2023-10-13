@@ -14,14 +14,11 @@ export async function createUser(req, res){
         const newPerson = new user({
             name,
             email,
-            password,
+            password: await hashPassword(password),
         });
         await newPerson.validate();
         await newPerson.save();
-        const key = await hashPassword(password);
-        req.session.secret = password;
-        if(key)
-            res.redirect(301, `/home?token=${encodeURIComponent(key)}`)
+        res.redirect(301, `/home`)
     }catch(e) {
         console.error('Error creating person:', e);
         res.status(500).json({ error: 'An error occurred while creating the person' });
@@ -32,11 +29,8 @@ export async function createUser(req, res){
 
 export async function getUser(req, res) {
     try {
-        const {secret} = req.session;
-        const person = await user.findOne({password: secret});
-        if(!person)
-            res.status(404).json({ error: 'Account not found' });
-        res.render(path.join(__dirname, "../public/home.ejs"), {User: person});
+        const {user} = req;
+        res.render(path.join(__dirname, "../public/home.ejs"), {User: user});
     } catch (error) {
         res.status(500).json({ error: 'An error occurred'});
     }
