@@ -40,6 +40,22 @@ export async function startingHand(req){
     }
 }
 
+export function getValue(req, res, next){
+    const {player, dealer} = req.session;
+    const people = [player, dealer];
+    people.forEach((person) => {
+        person.cards.forEach((card) => {
+            if(card.value === "ACE")
+                person.value += 11 || 1;
+            else if(!Number.isInteger(Number(card.value)))
+                person.value += 10;
+            else
+                person.value += Number(card.value);
+        })
+    })
+    next();
+}
+
 
 export function display(req, res){
     const {player, dealer} = req.session;
