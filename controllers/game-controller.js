@@ -42,6 +42,8 @@ export async function startingHand(req){
 
 export function getValue(req, res, next){
     const {player, dealer} = req.session;
+    player.value = 0;
+    dealer.value = 0;
     const people = [player, dealer];
     people.forEach((person) => {
         person.cards.forEach((card) => {
