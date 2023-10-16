@@ -1,11 +1,7 @@
-import dotenv from 'dotenv';
-import mongoose from 'mongoose';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { hashPassword } from '../middleware/login.js';
 import user from '../models/users.js';
-dotenv.config();
-mongoose.connect(process.env.MONGO_URI)
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export async function createUser(req, res){

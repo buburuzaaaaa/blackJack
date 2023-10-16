@@ -22,12 +22,12 @@ $(document).ready(function(){
 //     }
 // });
 
-
-
 function hit(){
     fetch("/game/hit", {
         method: "GET",
         headers: {"Content-Type": "application/json"}
+    }).then((res)=>{
+        location.reload();
     })
 }
 
@@ -35,5 +35,7 @@ function stand(){
     fetch("/game/stand", {
         method: "GET",
         headers: {"Content-Type": "application/json"}
+    }).then((res)=>{
+        location.reload();
     })
 }
