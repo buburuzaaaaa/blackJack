@@ -8,4 +8,6 @@ router.use(bodyParser.json());
 router.use(express.urlencoded({ extended: false, limit: 100000, parameterLimit: 6}))
 
 router.route('/').get(deck, getValue, display)
+router.route('/hit')
+router.route('/stand')
 export default router

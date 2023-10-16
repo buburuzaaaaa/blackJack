@@ -23,14 +23,8 @@ app.use(express.urlencoded({ extended: false, limit: 100000, parameterLimit: 6})
 app.use(session({
     secret: "fyhifwheufhuwebvfiwuygf38274gf23087gf32407h",
     deck_id: 'place-holder', 
-    player: {
-        cards: [],
-        value: 0
-    },
-    dealer: {
-        cards: [],
-        value: 0
-    },
+    player: null,
+    dealer: null,
     resave: false, 
     saveUninitialized: true,
 }));

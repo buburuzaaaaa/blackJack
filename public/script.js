@@ -24,4 +24,16 @@ $(document).ready(function(){
 
 
 
+function hit(){
+    fetch("/game/hit", {
+        method: "GET",
+        headers: {"Content-Type": "application/json"}
+    })
+}
 
+function stand(){
+    fetch("/game/stand", {
+        method: "GET",
+        headers: {"Content-Type": "application/json"}
+    })
+}
