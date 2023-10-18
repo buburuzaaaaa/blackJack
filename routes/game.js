@@ -9,6 +9,6 @@ router.use(express.urlencoded({ extended: false, limit: 100000, parameterLimit: 
 
 router.route('/').get(deck)
 router.route('/start').get(getValue, generalWin, display)
-router.route('/hit').get(hit)
+router.route('/hits').get(hit)
 router.route('/stand').get(stand);
 export default router

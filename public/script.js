@@ -23,16 +23,11 @@ $(document).ready(function(){
 // });
 
 function hit(){
-    fetch("/game/hit", {
+    fetch("/game/hits", {
         method: "GET",
         headers: {"Content-Type": "application/json"}
-    }).then(() => {
-        fetch("/game/start", {
-            method: "GET",
-            headers: {"Content-Type": "application/json"}
-        }).then((res) => {
-            window.location.href = res.url
-        })
+    }).then(res => {
+        window.location.reload();
     })
 }
 
@@ -40,12 +35,7 @@ function stand(){
     fetch("/game/stand", {
         method: "GET",
         headers: {"Content-Type": "application/json"}
-    }).then(() => {
-        fetch("/game/start", {
-            method: "GET",
-            headers: {"Content-Type": "application/json"}
-        }).then((res) => {
-            window.location.href = res.url
-        })
+    }).then(res => {
+        window.location.reload();
     })
 }

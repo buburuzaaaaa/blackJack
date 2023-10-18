@@ -91,25 +91,22 @@ export async function generalWin(req, res, next){
     const {player, dealer} = req.session;
     console.log(player.value, dealer.value)
     if(player.value === 21 || dealer.value > 21){
-        console.log("Win")
         user.findOneAndUpdate({ password: req.user.password }, { $inc: { win: 1 } }, { new: true })
             .then(updatedUser =>{
                 res.render(path.join(__dirname, "../public/result.ejs"), {result: "won"});
             });
     }else if(player.value > 21 || dealer.value === 21){
-        console.log("Loss")
         user.findOneAndUpdate({ password: req.user.password }, { $inc: { loss: 1 } }, { new: true })
             .then(updatedUser =>{
                 res.render(path.join(__dirname, "../public/result.ejs"), {result: "lost"});
             });
     }else{
-        console.log("next")
         next();
     }
 }
 
 // Function to hit, will assign cards to players and/or dealer if dealer has less than 17 points
-export async function hit(req, res, next){
+export async function hit(req, res){
     const {dealer} = req.session;
     if(dealer.value >= 17)
         await assignCard(req, true);
@@ -117,14 +114,14 @@ export async function hit(req, res, next){
         await assignCard(req, true);
         await assignCard(req, false);
     }
-    next();
+    res.status(300).redirect('/game/start');
 }
 
 // Function to stand, will check if dealer wins or give dealer a card 
 export async function stand(req, res, next){
-    const {deck_id, dealer} = req.session;
+    const {dealer} = req.session;
     if(dealer.value >= 17)
-        return await win(req, res)
+        await win(req, res)
     else{
         await assignCard(req, res, false)
         next();
