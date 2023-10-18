@@ -120,30 +120,34 @@ export async function hit(req, res){
 // Function to stand, will check if dealer wins or give dealer a card 
 export async function stand(req, res){
     const {dealer} = req.session;
-    if(dealer.value >= 17)
+    if(dealer.value >= 17){
         await win(req, res)
-    else
+    }else{
         await assignCard(req, res, false)
-    
-    res.status(200).redirect('/game/start')
+        res.status(200).redirect('/game/start')
+    }
 }
 
 // checks if anyone wins after a stand
 async function win(req, res){
     const {player, dealer} = req.session;
-    var result;
     if(player.value>dealer.value){
-        await user.findOneAndUpdate({ password: req.user.password }, { $inc: { win: 1 } }, { new: true });
-        result = "won";
+        user.findOneAndUpdate({ password: req.user.password }, { $inc: { win: 1 } }, { new: true })
+            .then(updatedUser => {
+                res.status(200).redirect('/game/result/won');
+            })
     }else if(player.value===dealer.value){
-        result = "tie";
+        res.status(200).redirect('/game/result/tied');
     }else if(player.value<dealer.value){
-        await user.findOneAndUpdate({ password: req.user.password }, { $inc: { loss: 1 } }, { new: true });
-        result = "lost";
+        user.findOneAndUpdate({ password: req.user.password }, { $inc: { win: 1 } }, { new: true })
+            .then(updatedUser => {
+                res.status(200).redirect('/game/result/lost');
+            })
     }
-    res.render(path.join(__dirname, "../public/result.ejs"), {result: result});
 }
 
 
-
-
+export function result(req, res){
+    const {type} = req.params;
+    res.render(path.join(__dirname, "../public/result.ejs"), {result: type});
+}
