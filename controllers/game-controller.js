@@ -114,18 +114,18 @@ export async function hit(req, res){
         await assignCard(req, true);
         await assignCard(req, false);
     }
-    res.status(300).redirect('/game/start');
+    res.status(200).redirect('/game/start')
 }
 
 // Function to stand, will check if dealer wins or give dealer a card 
-export async function stand(req, res, next){
+export async function stand(req, res){
     const {dealer} = req.session;
     if(dealer.value >= 17)
         await win(req, res)
-    else{
+    else
         await assignCard(req, res, false)
-        next();
-    }    
+    
+    res.status(200).redirect('/game/start')
 }
 
 // checks if anyone wins after a stand
