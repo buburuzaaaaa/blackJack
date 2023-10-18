@@ -7,7 +7,7 @@ body {
   background-color: rgb(21, 96, 14);
 }
 
-h1 {
+.opn {
   text-align: center;
   color: white;
   font-family: pirate;
@@ -50,6 +50,162 @@ h1 {
   height: 2vw;
 }
 
-div {
+.div {
+  text-align: center;
+}
+
+body {
+  background-color: rgb(21, 96, 14);
+}
+
+.inp {
+  border-radius: 0.5vw;
+  font-family: pirate;
+  border: 0.2vw black solid;
+  height: 2vw;
+}
+
+.sbtn {
+  background-color: rgba(111, 49, 23, 0.963);
+  font-family: pirate;
+  color: white;
+  border-radius: 1vw;
+  height: 3vw;
+  width: 10vw;
+  border: 0.2vw black solid;
+}
+
+.frm {
+  text-align: center;
+}
+
+.wlcm {
+  font-family: pirate;
+  color: white;
+  font-size: 3.5vw;
+  text-align: center;
+}
+
+body {
+  background-color: rgb(21, 96, 14);
+}
+
+.strt {
+  color: white;
+  font-family: pirate;
+  font-size: 5vw;
+  text-align: center;
+}
+
+.end {
+  font-family: pirate;
+  color: white;
+  text-align: center;
+}
+
+.ply1 {
+  background-color: rgba(111, 49, 23, 0.963);
+  font-family: pirate;
+  color: white;
+  height: 5vw;
+  width: 15vw;
+  border: 0.2vw black solid;
+  border-radius: 1vw;
+  text-align: center;
+  font-size: 2vw;
+}
+
+.btn-div {
+  text-align: center;
+}
+
+.bdy {
+  background-color: rgb(21, 96, 14);
+}
+
+.a {
+  text-align: center;
+  margin-top: 20vw;
+}
+
+.b {
+  background-color: rgba(111, 49, 23, 0.963);
+  font-family: pirate;
+  color: white;
+  height: 5vw;
+  width: 15vw;
+  border: 0.2vw black solid;
+  border-radius: 1vw;
+  text-align: center;
+  font-size: 2vw;
+}
+
+.bdy2 {
+  background-color: rgb(21, 96, 14);
+}
+
+.hit {
+  background-color: red;
+  height: 13.5vw;
+  width: 13.5vw;
+  border-radius: 1vw;
+  color: white;
+  font-family: pirate;
+  font-family: 2vw;
+  border: 0.2vw black solid;
+}
+
+.stand {
+  background-color: blue;
+  height: 13.5vw;
+  width: 13.5vw;
+  border-radius: 1vw;
+  color: white;
+  font-family: pirate;
+  font-family: 2vw;
+  border: 0.2vw black solid;
+}
+
+.dlr {
+  float: right;
+}
+
+.btns {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.tag {
+  float: right;
+}
+
+.col {
+  color: white;
+  font-family: pirate;
+  font-size: 2vw;
+  margin-left: 0rem;
+}
+
+.rt {
+  color: white;
+  font-family: pirate;
+  font-size: 5vw;
+  text-align: center;
+}
+
+.rtr {
+  background-color: rgba(111, 49, 23, 0.963);
+  font-family: pirate;
+  color: white;
+  height: 5vw;
+  width: 15vw;
+  border: 0.2vw black solid;
+  border-radius: 1vw;
+  text-align: center;
+  font-size: 1vw;
+  text-align: center;
+}
+
+.al {
   text-align: center;
 }/*# sourceMappingURL=styles.css.map */

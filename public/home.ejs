@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="scss/styles.css">
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello <%= User.name %> </h1>
-    <h1>Current win/lost: <%=User.win %> Wins and <%=User.loss%> Losses</h1>
-    <a href="/game"><button>Play game</button></a>
+    <h1 class="strt">Hello <%= User.name %> </h1>
+    <h1 class="end"> <%=User.win %> Wins and <%=User.loss%> Losses</h1>
+    <div class="btn-div"><a href="/game"><button class="ply1">Play game</button></a></div>
 </body>
 </html>

@@ -2,17 +2,19 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="./scss/styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 
-<body>
-    <form action="/signup" method="POST">
-        <input type="text" name="name" id="name" placeholder="Enter name">
-        <input type="email" name="email" id="email" autocomplete="email" placeholder="Enter email">
-        <input type="password" name="password" id="password" placeholder="Enter password">
-        <button type="submit">Sign Up!</button>
+<body class="bdy">
+    <h1 class="wlcm">Create your account</h1>
+    <form action="/signup" method="POST" class="frm">
+        <input type="text" name="name" id="name" placeholder="Enter name" class="inp">
+        <input type="email" name="email" id="email" autocomplete="email" placeholder="Enter email" class="inp">
+        <input type="password" name="password" id="password" placeholder="Enter password" class="inp">
+        <button type="submit" class="sbtn">Sign Up!</button>
     </form>
 </body>
 
