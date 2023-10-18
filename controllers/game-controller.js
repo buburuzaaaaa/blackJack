@@ -84,15 +84,28 @@ export async function getValue(req, res, next){
                 person.value += Number(card.value);
         })
     })
+    next()
+}
+
+export async function generalWin(req, res, next){
+    const {player, dealer} = req.session;
     console.log(player.value, dealer.value)
     if(player.value === 21 || dealer.value > 21){
-        await user.findOneAndUpdate({ password: req.user.password }, { $inc: { win: 1 } }, { new: true });
-        return res.render(path.join(__dirname, "../public/result.ejs"), {result: "won"});
+        console.log("Win")
+        user.findOneAndUpdate({ password: req.user.password }, { $inc: { win: 1 } }, { new: true })
+            .then(updatedUser =>{
+                res.render(path.join(__dirname, "../public/result.ejs"), {result: "won"});
+            });
     }else if(player.value > 21 || dealer.value === 21){
-        await user.findOneAndUpdate({ password: req.user.password }, { $inc: { loss: 1 } }, { new: true });
-        return res.render(path.join(__dirname, "../public/result.ejs"), {result: "lost"});
+        console.log("Loss")
+        user.findOneAndUpdate({ password: req.user.password }, { $inc: { loss: 1 } }, { new: true })
+            .then(updatedUser =>{
+                res.render(path.join(__dirname, "../public/result.ejs"), {result: "lost"});
+            });
+    }else{
+        console.log("next")
+        next();
     }
-    next();
 }
 
 // Function to hit, will assign cards to players and/or dealer if dealer has less than 17 points
@@ -111,7 +124,7 @@ export async function hit(req, res, next){
 export async function stand(req, res, next){
     const {deck_id, dealer} = req.session;
     if(dealer.value >= 17)
-        await win(req, res)
+        return await win(req, res)
     else{
         await assignCard(req, res, false)
         next();
@@ -131,7 +144,7 @@ async function win(req, res){
         await user.findOneAndUpdate({ password: req.user.password }, { $inc: { loss: 1 } }, { new: true });
         result = "lost";
     }
-    return res.render(path.join(__dirname, "../public/result.ejs"), {result: result});
+    res.render(path.join(__dirname, "../public/result.ejs"), {result: result});
 }
 
 

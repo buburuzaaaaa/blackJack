@@ -26,8 +26,13 @@ function hit(){
     fetch("/game/hit", {
         method: "GET",
         headers: {"Content-Type": "application/json"}
-    }).then((res)=>{
-        location.reload();
+    }).then(() => {
+        fetch("/game/start", {
+            method: "GET",
+            headers: {"Content-Type": "application/json"}
+        }).then((res) => {
+            window.location.href = res.url
+        })
     })
 }
 
@@ -35,7 +40,12 @@ function stand(){
     fetch("/game/stand", {
         method: "GET",
         headers: {"Content-Type": "application/json"}
-    }).then((res)=>{
-        location.reload();
+    }).then(() => {
+        fetch("/game/start", {
+            method: "GET",
+            headers: {"Content-Type": "application/json"}
+        }).then((res) => {
+            window.location.href = res.url
+        })
     })
 }
