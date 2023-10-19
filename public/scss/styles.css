@@ -192,6 +192,23 @@ body {
   font-size: 5vw;
   text-align: center;
 }
+.rt2 {
+  color: white;
+  font-family: pirate;
+  font-size: 2vw;
+  text-align: center;
+}
+.Leaderboards{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.ol{
+  width: 50%;
+  height: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .rtr {
   background-color: rgba(111, 49, 23, 0.963);

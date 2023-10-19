@@ -8,6 +8,18 @@
 </head>
 <body>
     <h1 class="rt">You <%=result%> </h1>
+    <br>
+    <div class="Leaderboards">
+      <h1 class="rt">Leaderboards</h1>
+      <ol class="ol">
+        <% for(let i=0; i < 10; i++){ %>
+          <li class="rt2">
+            <%=players[i].name%> : <%=players[i].win%>
+          </li>
+          <%}%>
+      </ol>
+    </div>
+    
   <div class="al"><a href="/home"><button class="rtr">Return to Home Page</button></a></div>
 </body>
 </html>

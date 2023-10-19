@@ -93,12 +93,12 @@ export async function generalWin(req, res, next){
     if(player.value === 21 || dealer.value > 21){
         user.findOneAndUpdate({ password: req.user.password }, { $inc: { win: 1 } }, { new: true })
             .then(updatedUser =>{
-                res.render(path.join(__dirname, "../public/result.ejs"), {result: "won"});
+                res.status(200).redirect('/game/result/won');
             });
     }else if(player.value > 21 || dealer.value === 21){
         user.findOneAndUpdate({ password: req.user.password }, { $inc: { loss: 1 } }, { new: true })
             .then(updatedUser =>{
-                res.render(path.join(__dirname, "../public/result.ejs"), {result: "lost"});
+                res.status(200).redirect('/game/result/lost');
             });
     }else{
         next();
@@ -147,7 +147,9 @@ async function win(req, res){
 }
 
 
-export function result(req, res){
+export async function result(req, res){
     const {type} = req.params;
-    res.render(path.join(__dirname, "../public/result.ejs"), {result: type});
+    var players = await user.find({})
+    players = players.sort((x, y) => {return y.win - x.win});
+    res.render(path.join(__dirname, "../public/result.ejs"), {result: type, players});
 }
